@@ -1,2 +1,2 @@
 web: vendor/bin/heroku-php-nginx public/
-web: php artisan migrate --no-interaction
+worker: php artisan migrate --no-interaction
