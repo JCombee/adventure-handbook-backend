@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
 
             $table->string('type');
-            $table->json('value');
+            $table->text('value');
             $table->morphs('referenceable');
 
             $table->timestamps();
