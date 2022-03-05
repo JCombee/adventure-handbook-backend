@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\DataAggregators\WikiApi\DataProviders;
 
-use App\DataAggregators\WikiApi\References\PageIdReference;
+use App\DataAggregators\WikiApi\References\CategoryReference;
 use App\DataAggregators\WikiApi\WikiApiDataProviderAbstract;
 use App\Models\Character;
 
 class CharacterListDataProvider extends WikiApiDataProviderAbstract
 {
+    public const PAGE = 'Category:Playable_Characters';
+
     protected array $parameters = [
         'action' => 'query',
         'list' => 'categorymembers',
@@ -31,10 +33,10 @@ class CharacterListDataProvider extends WikiApiDataProviderAbstract
                     'name' => $character['title'],
                 ]);
 
-            $reference = new PageIdReference($character['pageid']);
+            $reference = new CategoryReference(static::PAGE);
 
             $characterModel->references()->updateOrCreate([
-                'type' => PageIdReference::class,
+                'type' => CategoryReference::class,
                 'value' => $reference->getData(),
             ]);
         }
