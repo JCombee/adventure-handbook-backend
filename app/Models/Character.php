@@ -13,6 +13,7 @@ class Character extends Model
     protected $fillable = [
         'slug',
         'name',
+        'page_id',
     ];
 
 

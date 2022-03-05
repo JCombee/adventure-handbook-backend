@@ -32,7 +32,9 @@ class CharacterListDataProvider extends WikiApiDataProviderAbstract
             $characterModel = Character::query()
                 ->updateOrCreate([
                     'slug' => Str::slug($character['title']),
+                ], [
                     'name' => $character['title'],
+                    'page_id' => $character['pageid'],
                 ]);
 
             $reference = new CategoryReference(static::PAGE);

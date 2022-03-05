@@ -17,6 +17,7 @@ return new class extends Migration {
 
             $table->string('slug');
             $table->string('name');
+            $table->unsignedBigInteger('page_id');
 
             $table->timestamps();
         });
