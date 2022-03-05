@@ -45,7 +45,6 @@ class ReferenceValue extends ScalarType
      */
     public function parseLiteral($valueNode, ?array $variables = null)
     {
-        dd($valueNode);
         return $valueNode->value;
     }
 }
