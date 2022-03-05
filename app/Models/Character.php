@@ -11,8 +11,9 @@ class Character extends Model
     use HasFactory, HasReferences;
 
     protected $fillable = [
+        'slug',
         'name',
     ];
 
-    
+
 }

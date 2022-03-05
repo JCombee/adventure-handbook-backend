@@ -7,6 +7,7 @@ namespace App\DataAggregators\WikiApi\DataProviders;
 use App\DataAggregators\WikiApi\References\CategoryReference;
 use App\DataAggregators\WikiApi\WikiApiDataProviderAbstract;
 use App\Models\Character;
+use Illuminate\Support\Str;
 
 class CharacterListDataProvider extends WikiApiDataProviderAbstract
 {
@@ -30,6 +31,7 @@ class CharacterListDataProvider extends WikiApiDataProviderAbstract
             /** @var Character $characterModel */
             $characterModel = Character::query()
                 ->updateOrCreate([
+                    'slug' => Str::slug($character['title']),
                     'name' => $character['title'],
                 ]);
 
